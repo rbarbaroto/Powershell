@@ -1,0 +1,5 @@
+$Days2count = 7
+$time = (Get-Date).Adddays(-($Days2count))
+
+
+Get-ADUser -Filter {(LastLogon -ge $time)} -Properties samAccountName, Description | Select-Object samAccountName, name, Description  | Out-File “C:\Users\rbarbaroto\Desktop\LogonLastWeek.txt”
